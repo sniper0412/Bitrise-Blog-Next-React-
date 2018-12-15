@@ -1,14 +1,36 @@
 {
   "name": "react-blog",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "start-next": "next start",
+    "build": "next build",
+    "dev": "next",
+    "test": "NODE_ENV=test jest",
+    "test:watch": "npm test -- --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "@zeit/next-bundle-analyzer": "^0.1.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "jest": "^23.6.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.6.3"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
     "buttercms": "^1.0.10",
+    "classnames": "^2.2.6",
     "dotenv": "^6.1.0",
+    "lodash": "^4.17.11",
     "next": "^7.0.2",
+    "node-sass": "^4.11.0",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "react-inlinesvg": "^0.8.3"
   }
 }

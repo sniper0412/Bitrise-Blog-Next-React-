@@ -1,4 +1,6 @@
 import React from 'react';
+import SVG from 'react-inlinesvg';
+import cx from 'classnames';
 
 const Category = ({ data: { path, name } }) => (
   <a href={path} title={name} className="category">
@@ -8,7 +10,7 @@ const Category = ({ data: { path, name } }) => (
 
 export default class Categories extends React.Component {
   state = {
-    dropDownOpened: false
+    isDropDownOpen: false
   };
 
   componentDidMount() {
@@ -27,67 +29,41 @@ export default class Categories extends React.Component {
   }
 
   onSelectCategory() {
-    const dropDownOpened = !this.state.dropDownOpened;
-    this.setState({ dropDownOpened });
+    this.setState({ isDropDownOpen: !this.state.isDropDownOpen });
   }
 
   render() {
-
     const { categories } = this.props;
+    const { isDropDownOpen } = this.state;
 
     return (
       // <% environment.context_class.instance_eval { include ApplicationHelper } %>
       <div className="categories">
-        <div
-          className="category-select-wrapper"
-          onClick={() => this.onSelectCategory()}
-        >
-          {/* <%= svg('filter') %> */}
-          <button className="category-select-mobile category-select">
-            filter by category
-          </button>
-          <div
-            className={
-              this.state.dropDownOpened
-                ? 'dropdown-arrow-container opened'
-                : 'dropdown-arrow-container closed'
-            }
-          >
-            {/* <%= svg('dropdown_arrow') %> */}
+        <div className="category-select-wrapper" onClick={() => this.onSelectCategory()}>
+          <SVG src="/static/svg/filter.svg" />
+          <button className="category-select-mobile category-select">filter by category</button>
+          <div className={cx('dropdown-arrow-container', isDropDownOpen ? 'opened' : 'closed')}>
+            <SVG src="/static/svg/dropdown_arrow.svg" />
           </div>
         </div>
-        <div
-          className={
-            this.state.dropDownOpened
-              ? 'content-wrapper opened'
-              : 'content-wrapper'
-          }
-        >
+        <div className={cx('content-wrapper', { opened: isDropDownOpen })}>
           <div className="search-mobile">
             <div className="search-wrapper">
-              {/* <%= svg('search') %> */}
-              <input
-                id="searchKeyWordMobile"
-                name="searchKeyWordMobile"
-                type="text"
-                placeholder="Search articles..."
-              />
+              <SVG src="/static/svg/search.svg" />
+              <input id="searchKeyWordMobile" name="searchKeyWordMobile" type="text" placeholder="Search articles..." />
             </div>
           </div>
           <a href="/" title="Home" className="category home">
-            {/* <%= svg('home_button') %> */}
+            <SVG src="/static/svg/home_button.svg" />
             <span>Home</span>
           </a>
-          {categories.map(category => <Category data={category} key={category.name} />)}
+          {categories.map(category => (
+            <Category data={category} key={category.name} />
+          ))}
           <div className="search-container desktop">
             <div className="search-wrapper">
-              {/* <%= svg('search') %> */}
-              <input
-                id="searchKeyWord"
-                name="searchKeyWord"
-                type="text"
-                placeholder="Search articles"
-              />
+              <SVG src="/static/svg/search.svg" />
+              <input id="searchKeyWord" name="searchKeyWord" type="text" placeholder="Search articles" />
             </div>
           </div>
         </div>
