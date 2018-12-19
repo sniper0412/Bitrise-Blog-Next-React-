@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { AuthorType } from '../types';
 import { ROUTE_PATHS } from '../config';
 
-// TODO: image_path('blog_default_avatar')
-const AuthorInfo = ({ slug, firstName, lastName, profileImage, title }) => (
-  <div className="author-info-container">
+const AuthorInfo = ({ isBanner = false, slug, firstName, lastName, profileImage, title }) => (
+  <div className={isBanner ? 'author-header-container' : 'author-info-container'}>
+    {isBanner && <div className="all-articles">all articles by</div>}
     <div className="author-info">
       <div className="author-container">
-        <img alt={`${firstName} ${lastName} avatar`} src={profileImage} />
+        <img alt={`${firstName} ${lastName} avatar`} src={profileImage || '/static/svg/default_avatar.svg'} />
         <div className="name-and-title">
           <a href={`${ROUTE_PATHS.authors}/${slug}`}>
             {firstName} {lastName}
@@ -21,11 +22,8 @@ const AuthorInfo = ({ slug, firstName, lastName, profileImage, title }) => (
 );
 
 AuthorInfo.propTypes = {
-  slug: PropTypes.string.isRequired,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  profileImage: PropTypes.string.isRequired,
-  title: PropTypes.string
+  ...AuthorType,
+  isBanner: PropTypes.bool
 };
 
 export default AuthorInfo;

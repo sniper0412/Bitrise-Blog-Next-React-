@@ -23,11 +23,19 @@ module.exports = [
     }
   ],
   [
+    new Path(`/authors/:slug`),
+    async (app, req, res, { slug }) => {
+      return app.render(req, res, '/author', {
+        slug
+      });
+    }
+  ],
+  [
     new Path('/fetch-posts'),
     async (app, req, res) => {
       const { query } = parse(req.url, true);
 
-      const camelCaseQuery = mapKeys((_, key) => camelCase(key));
+      const camelCaseQuery = mapKeys(query, (_, key) => camelCase(key));
 
       const posts = await fetchPosts(camelCaseQuery);
 
