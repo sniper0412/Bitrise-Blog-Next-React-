@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { ROUTE_PATHS } from '../config';
+
 // TODO: image_path('blog_default_avatar')
 const AuthorInfo = ({ slug, firstName, lastName, profileImage, title }) => (
   <div className="author-info-container">
@@ -8,7 +10,7 @@ const AuthorInfo = ({ slug, firstName, lastName, profileImage, title }) => (
       <div className="author-container">
         <img alt={`${firstName} ${lastName} avatar`} src={profileImage} />
         <div className="name-and-title">
-          <a href={`/author/${slug}`}>
+          <a href={`${ROUTE_PATHS.authors}/${slug}`}>
             {firstName} {lastName}
           </a>
           {title && <p>{title}</p>}

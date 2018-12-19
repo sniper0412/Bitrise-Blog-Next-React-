@@ -2,8 +2,10 @@ import React from 'react';
 import SVG from 'react-inlinesvg';
 import cx from 'classnames';
 
-const Category = ({ data: { path, name } }) => (
-  <a href={path} title={name} className="category">
+import { ROUTE_PATHS } from '../config';
+
+const Category = ({ data: { slug, name } }) => (
+  <a href={`${ROUTE_PATHS.categories}/${slug}`} title={name} className="category">
     {name}
   </a>
 );

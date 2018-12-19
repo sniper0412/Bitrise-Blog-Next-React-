@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 import { PostType } from '../types';
 import { formatDate } from '../utils';
+import { ROUTE_PATHS } from '../config';
 
 const PostSummary = ({ slug, title, summary, categories = [], published, featuredImage, defaultImagePath }) => (
   <div className="article-container" key={slug}>
-    <a href={`/post/${slug}`} title={title}>
+    <a href={`${ROUTE_PATHS.posts}/${slug}`} title={title}>
       <div className="header-container">
         {categories.length > 0 && <p className="category">{categories[0].name}</p>}
         <p className="date">{formatDate(published)}</p>

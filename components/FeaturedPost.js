@@ -1,6 +1,7 @@
 import React from 'react';
 import SVG from 'react-inlinesvg';
 
+import { ROUTE_PATHS } from '../config';
 import { PostType } from '../types';
 import { formatDate } from '../utils';
 
@@ -17,7 +18,7 @@ const FeaturedPost = ({ slug, title, featuredImage, categories, published, summa
             <p className="category tag">featured</p>
           </a>
           {categories.map(({ name, slug }) => (
-            <a className="category" key={slug} href={`/categories/${slug}`}>
+            <a className="category" key={slug} href={`${ROUTE_PATHS.categories}/${slug}`}>
               {name}
             </a>
           ))}
@@ -30,7 +31,7 @@ const FeaturedPost = ({ slug, title, featuredImage, categories, published, summa
         <p>{summary}</p>
 
         <div className="default-button more">
-          <a className="read-more" title="read more..." href="<%= buttercms_post_path(post.slug) %>">
+          <a className="read-more" title="read more..." href={`${ROUTE_PATHS.posts}/${slug}`}>
             <div className="button-content-wrapper">
               <span>Read more</span>
               <SVG src="/static/svg/right_arrow.svg" />

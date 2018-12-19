@@ -29,6 +29,7 @@
     "lodash": "^4.17.11",
     "next": "^7.0.2",
     "node-sass": "^4.11.0",
+    "path-parser": "^4.2.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-inlinesvg": "^0.8.3"
