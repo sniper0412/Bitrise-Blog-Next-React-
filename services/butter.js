@@ -12,6 +12,14 @@ const fetchPosts = ({ page = 1, pageSize = 6, tagSlug, categorySlug, authorSlug,
     author_slug: authorSlug,
     exclude_body: excludeBody
   });
+
+const searchPosts = ({ query, page = 1, pageSize = 6, excludeBody = true }) =>
+  butter().post.search(query, {
+    page,
+    page_size: pageSize,
+    exclude_body: excludeBody
+  });
+
 const fetchCategories = () =>
   butter()
     .category.list()
@@ -21,6 +29,7 @@ const fetchCategory = ({ slug }) =>
   butter()
     .category.retrieve(slug)
     .then(unpackButterResp);
+
 const fetchAuthor = ({ slug }) =>
   butter()
     .author.retrieve(slug)
@@ -28,6 +37,7 @@ const fetchAuthor = ({ slug }) =>
 
 module.exports = {
   fetchPosts,
+  searchPosts,
   fetchCategories,
   fetchCategory,
   fetchAuthor
