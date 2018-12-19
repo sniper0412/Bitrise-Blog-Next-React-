@@ -10,7 +10,7 @@ const Category = ({ data: { slug, name } }) => (
   </a>
 );
 
-export default class Categories extends React.Component {
+export default class SubNav extends React.Component {
   state = {
     isDropDownOpen: false
   };
@@ -33,6 +33,10 @@ export default class Categories extends React.Component {
   onSelectCategory() {
     this.setState({ isDropDownOpen: !this.state.isDropDownOpen });
   }
+
+  static defaultProps = {
+    categories: []
+  };
 
   render() {
     const { categories } = this.props;

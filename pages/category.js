@@ -29,9 +29,7 @@ export default class extends React.Component {
       {
         data: { data: posts }
       },
-      {
-        data: { data: category }
-      }
+      category
     ] = await Promise.all([fetchPosts({ categorySlug: slug }), fetchCategory({ slug })]);
 
     return {

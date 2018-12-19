@@ -1,21 +1,18 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
-import Butter from 'buttercms';
+
+import { fetchCategories } from '../services/butter';
 
 import Navigation from '../components/Navigation';
-import Categories from '../components/Categories';
+import SubNav from '../components/SubNav';
 import Footer from '../components/Footer';
 
 import '../assets/stylesheets/application.scss';
 
-export default class MyApp extends App {
+export default class extends App {
   static async getInitialProps({ Component, router, ctx }) {
-    const butter = Butter(process.env.BUTTER_TOKEN);
-    const {
-      data: { data: categories }
-    } = await butter.category.list();
-
+    const categories = await fetchCategories();
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -42,7 +39,7 @@ export default class MyApp extends App {
           />
         </Head>
         <Navigation />
-        <Categories categories={categories || []} />
+        <SubNav categories={categories} />
         <div className="content">
           <Component {...pageProps} />
         </div>

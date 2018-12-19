@@ -29,9 +29,7 @@ export default class extends React.Component {
       {
         data: { data: posts }
       },
-      {
-        data: { data: author }
-      }
+      author
     ] = await Promise.all([fetchPosts({ authorSlug: slug }), fetchAuthor({ slug })]);
 
     return {
