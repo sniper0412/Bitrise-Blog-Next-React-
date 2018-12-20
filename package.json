@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next",
     "test": "NODE_ENV=test jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "sitemap": "node scripts/generate-sitemap.js"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -18,7 +19,8 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "jest": "^23.6.0",
     "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.6.3"
+    "react-test-renderer": "^16.6.3",
+    "sitemap": "^2.1.0"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
