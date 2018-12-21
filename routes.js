@@ -3,7 +3,7 @@ const Path = require('path-parser').default;
 const mapKeys = require('lodash/mapKeys');
 const camelCase = require('lodash/camelCase');
 
-const { fetchPosts } = require('./services/butter');
+const { fetchPosts, searchPosts } = require('./services/butter');
 
 const redirectWithSlugConfig = (from, to) => [
   new Path(from),
@@ -22,7 +22,21 @@ module.exports = [
 
       const camelCaseQuery = mapKeys(query, (_, key) => camelCase(key));
 
-      const posts = await fetchPosts(camelCaseQuery);
+      let posts;
+
+      if (query.query) {
+        const {
+          data: { data }
+        } = await searchPosts(camelCaseQuery);
+
+        posts = data;
+      } else {
+        const {
+          data: { data }
+        } = await fetchPosts(camelCaseQuery);
+
+        posts = data;
+      }
 
       res.setHeader('Content-Type', 'application/json');
       return res.end(JSON.stringify(posts));

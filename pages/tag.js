@@ -10,12 +10,13 @@ import { ROUTE_PATHS } from '../config';
 import MetaTags from '../components/MetaTags';
 import Hero from '../components/Hero';
 import TryBitrise from '../components/TryBitrise';
-import PostSummary from '../components/PostSummary';
+import PostList from '../components/PostList';
 
 export default class extends React.Component {
   static propTypes = {
     posts: PropTypes.arrayOf(PropTypes.shape(PostType)),
-    category: PropTypes.shape(CategoryType)
+    category: PropTypes.shape(CategoryType),
+    postCount: PropTypes.number
   };
 
   static async getInitialProps({ query }) {
@@ -23,21 +24,25 @@ export default class extends React.Component {
 
     const [
       {
-        data: { data: posts }
+        data: {
+          data: posts,
+          meta: { count: postCount }
+        }
       },
       tag
     ] = await Promise.all([fetchPosts({ tagSlug: slug }), fetchTag({ slug })]);
 
     return {
       posts: posts.map(camlizeKeysDeep),
-      tag
+      tag,
+      postCount
     };
   }
 
   getPosts() {}
 
   render() {
-    const { posts, tag } = this.props;
+    const { posts, tag, postCount } = this.props;
 
     return (
       <Fragment>
@@ -56,11 +61,7 @@ export default class extends React.Component {
             </h2>
           </div>
 
-          <div id="articles-container" className="articles">
-            {posts.map((post, key) => (
-              <PostSummary key={key} {...post} defaultImagePath="/static/img/post-default-img.jpg" />
-            ))}
-          </div>
+          <PostList initialPosts={posts} count={postCount} filters={{ tagSlug: tag.slug }} />
         </div>
         <TryBitrise />
       </Fragment>

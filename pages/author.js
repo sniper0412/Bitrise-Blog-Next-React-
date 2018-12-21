@@ -9,12 +9,13 @@ import { ROUTE_PATHS } from '../config';
 import MetaTags from '../components/MetaTags';
 import AuthorInfo from '../components/AuthorInfo';
 import TryBitrise from '../components/TryBitrise';
-import PostSummary from '../components/PostSummary';
+import PostList from '../components/PostList';
 
 export default class extends React.Component {
   static propTypes = {
     posts: PropTypes.arrayOf(PropTypes.shape(PostType)),
-    author: PropTypes.shape(AuthorType)
+    author: PropTypes.shape(AuthorType),
+    postCount: PropTypes.number
   };
 
   static async getInitialProps({ query }) {
@@ -22,21 +23,23 @@ export default class extends React.Component {
 
     const [
       {
-        data: { data: posts }
+        data: {
+          data: posts,
+          meta: { count: postCount }
+        }
       },
       author
     ] = await Promise.all([fetchPosts({ authorSlug: slug }), fetchAuthor({ slug })]);
 
     return {
       posts: posts.map(camlizeKeysDeep),
-      author: camlizeKeysDeep(author)
+      author: camlizeKeysDeep(author),
+      postCount
     };
   }
 
-  getPosts() {}
-
   render() {
-    const { posts, author } = this.props;
+    const { posts, author, postCount } = this.props;
     const authorName = `${author.firstName} ${author.lastName}`;
 
     return (
@@ -52,11 +55,7 @@ export default class extends React.Component {
         <AuthorInfo {...author} isBanner />
 
         <div className="author-content">
-          <div id="articles-container" className="articles">
-            {posts.map((post, key) => (
-              <PostSummary key={key} {...post} defaultImagePath="/static/img/post-default-img.jpg" />
-            ))}
-          </div>
+          <PostList initialPosts={posts} count={postCount} filters={{ authorSlug: author.slug }} />
         </div>
 
         <TryBitrise />

@@ -9,31 +9,34 @@ import { ROUTE_PATHS } from '../config';
 import MetaTags from '../components/MetaTags';
 import Hero from '../components/Hero';
 import TryBitrise from '../components/TryBitrise';
-import PostSummary from '../components/PostSummary';
+import PostList from '../components/PostList';
 
 export default class extends React.Component {
   static propTypes = {
     posts: PropTypes.arrayOf(PropTypes.shape(PostType)),
-    query: PropTypes.string.isRequired
+    query: PropTypes.string.isRequired,
+    postCount: PropTypes.number
   };
 
   static async getInitialProps({ query: queryParams }) {
     const { q: query } = queryParams;
 
     const {
-      data: { data: posts }
+      data: {
+        data: posts,
+        meta: { count: postCount }
+      }
     } = await searchPosts({ query });
 
     return {
       posts: posts.map(camlizeKeysDeep),
+      postCount,
       query
     };
   }
 
-  getPosts() {}
-
   render() {
-    const { posts, query } = this.props;
+    const { posts, query, postCount } = this.props;
 
     return (
       <Fragment>
@@ -52,11 +55,7 @@ export default class extends React.Component {
             </h2>
           </div>
 
-          <div id="articles-container" className="articles">
-            {posts.map((post, key) => (
-              <PostSummary key={key} {...post} defaultImagePath="/static/img/post-default-img.jpg" />
-            ))}
-          </div>
+          <PostList initialPosts={posts} count={postCount} filters={{ query }} />
         </div>
         <TryBitrise />
       </Fragment>

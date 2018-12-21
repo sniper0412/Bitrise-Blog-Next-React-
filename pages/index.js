@@ -9,19 +9,24 @@ import MetaTags from '../components/MetaTags';
 import FeaturedPost from '../components/FeaturedPost';
 import Hero from '../components/Hero';
 import TryBitrise from '../components/TryBitrise';
-import PostSummary from '../components/PostSummary';
+import PostList from '../components/PostList';
 
 const FEATURED_TAG = 'featured';
 
 export default class extends React.Component {
   static propTypes = {
-    posts: PropTypes.arrayOf(PropTypes.shape(PostType))
+    posts: PropTypes.arrayOf(PropTypes.shape(PostType)),
+    featuredPost: PropTypes.shape(PostType),
+    postCount: PropTypes.number
   };
 
   static async getInitialProps({ query }) {
     const [
       {
-        data: { data: posts }
+        data: {
+          data: posts,
+          meta: { count: postCount }
+        }
       },
       {
         data: {
@@ -32,18 +37,13 @@ export default class extends React.Component {
 
     return {
       posts: posts.map(camlizeKeysDeep),
-      featuredPost: camlizeKeysDeep(featuredPost)
+      featuredPost: camlizeKeysDeep(featuredPost),
+      postCount
     };
   }
 
-  getPosts() {}
-
   render() {
-    const {
-      featuredPost,
-      posts
-      // meta: { next_page, previous_page }
-    } = this.props;
+    const { posts, featuredPost, postCount } = this.props;
 
     return (
       <Fragment>
@@ -55,26 +55,7 @@ export default class extends React.Component {
 
           <h2>Recent articles</h2>
 
-          <div id="articles-container" className="articles">
-            {posts.map((post, key) => (
-              <PostSummary key={key} {...post} defaultImagePath="/static/img/post-default-img.jpg" />
-            ))}
-          </div>
-          {/* <a href={`/post/${post.slug}`}>{post.title}</a> */}
-
-          {/* <div>
-            {previous_page && (
-              <Link href={`/?page=${previous_page}`}>
-                <a>Prev</a>
-              </Link>
-            )}
-
-            {next_page && (
-              <Link href={`/?page=${next_page}`}>
-                <a>Next</a>
-              </Link>
-            )}
-          </div> */}
+          <PostList initialPosts={posts} count={postCount} />
         </div>
         <TryBitrise />
       </Fragment>
