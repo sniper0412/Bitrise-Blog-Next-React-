@@ -23,6 +23,14 @@ module.exports = [
     }
   ],
   [
+    new Path(`/tags/:slug`),
+    async (app, req, res, { slug }) => {
+      return app.render(req, res, '/tag', {
+        slug
+      });
+    }
+  ],
+  [
     new Path(`/authors/:slug`),
     async (app, req, res, { slug }) => {
       return app.render(req, res, '/author', {

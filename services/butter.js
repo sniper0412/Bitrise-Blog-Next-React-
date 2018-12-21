@@ -30,6 +30,11 @@ const fetchCategory = ({ slug }) =>
     .category.retrieve(slug)
     .then(unpackButterResp);
 
+const fetchTag = ({ slug }) =>
+  butter()
+    .tag.retrieve(slug)
+    .then(unpackButterResp);
+
 const fetchAuthor = ({ slug }) =>
   butter()
     .author.retrieve(slug)
@@ -40,5 +45,6 @@ module.exports = {
   searchPosts,
   fetchCategories,
   fetchCategory,
+  fetchTag,
   fetchAuthor
 };
