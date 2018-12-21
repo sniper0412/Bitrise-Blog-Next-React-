@@ -5,39 +5,16 @@ const camelCase = require('lodash/camelCase');
 
 const { fetchPosts } = require('./services/butter');
 
+const redirectWithSlugConfig = (from, to) => [
+  new Path(from),
+  async (app, req, res, { slug }) => app.render(req, res, to, { slug })
+];
+
 module.exports = [
-  [
-    new Path(`/posts/:slug`),
-    async (app, req, res, { slug }) => {
-      return app.render(req, res, '/post', {
-        slug
-      });
-    }
-  ],
-  [
-    new Path(`/categories/:slug`),
-    async (app, req, res, { slug }) => {
-      return app.render(req, res, '/category', {
-        slug
-      });
-    }
-  ],
-  [
-    new Path(`/tags/:slug`),
-    async (app, req, res, { slug }) => {
-      return app.render(req, res, '/tag', {
-        slug
-      });
-    }
-  ],
-  [
-    new Path(`/authors/:slug`),
-    async (app, req, res, { slug }) => {
-      return app.render(req, res, '/author', {
-        slug
-      });
-    }
-  ],
+  redirectWithSlugConfig('/posts/:slug', '/post'),
+  redirectWithSlugConfig('/categories/:slug', '/category'),
+  redirectWithSlugConfig('/tags/:slug', '/tag'),
+  redirectWithSlugConfig('/authors/:slug', '/author'),
   [
     new Path('/fetch-posts'),
     async (app, req, res) => {

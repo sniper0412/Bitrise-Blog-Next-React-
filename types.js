@@ -5,7 +5,8 @@ export const AuthorType = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   profileImage: PropTypes.string.isRequired,
-  title: PropTypes.string
+  title: PropTypes.string,
+  bio: PropTypes.string
 };
 
 export const CategoryType = {

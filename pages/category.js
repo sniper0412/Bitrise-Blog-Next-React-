@@ -1,20 +1,16 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Head from 'next/head';
+import capitalize from 'lodash/capitalize';
 
 import { camlizeKeysDeep } from '../utils';
 import { PostType, CategoryType } from '../types';
 import { fetchPosts, fetchCategory } from '../services/butter';
+import { ROUTE_PATHS } from '../config';
 
+import MetaTags from '../components/MetaTags';
 import Hero from '../components/Hero';
 import TryBitrise from '../components/TryBitrise';
 import PostSummary from '../components/PostSummary';
-
-const META = {
-  title: 'Bitrise Blog - Mobile Continuous Integration and Delivery',
-  description:
-    'Bitrise Blog - Mobile Continuous Integration and Delivery for your whole team, with dozens of integrations for your favourite services.'
-};
 
 export default class extends React.Component {
   static propTypes = {
@@ -45,19 +41,12 @@ export default class extends React.Component {
 
     return (
       <Fragment>
-        <Head>
-          <title>{META.title}</title>
-          <meta name="description" content={META.description} />
-          <meta property="fb:app_id" content="649161285439710" />
-          <meta property="og:title" content={META.title} />
-          <meta property="og:description" content={META.description} />
-          <meta property="og:url" content="https://blog.bitrise.io/<%= content_for(:canonical_url) %>" />
-          <meta property="og:site_name" content="Bitrise Blog" />
-          <meta property="og:type" content="article" />
-          <meta property="og:image" content="https://www.bitrise.io/assets/placeholders/website-social-embed.png" />
-          <meta property="og:image:width" content="1910" />
-          <meta property="og:image:height" content="1000" />
-        </Head>
+        <MetaTags
+          title={capitalize(category.name)}
+          ogTitle={`Bitrise Blog - Posts in ${capitalize(category.name)}`}
+          url={`${ROUTE_PATHS.categories}/${category.slug}`}
+        />
+
         <Hero />
 
         <div className="category-content">
