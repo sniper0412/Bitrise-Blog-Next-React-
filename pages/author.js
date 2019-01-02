@@ -7,7 +7,7 @@ import { fetchPosts, fetchAuthor } from '../services/butter';
 import { ROUTE_PATHS } from '../config';
 
 import MetaTags from '../components/MetaTags';
-import AuthorInfo from '../components/AuthorInfo';
+import AuthorList from '../components/AuthorList';
 import TryBitrise from '../components/TryBitrise';
 import PostList from '../components/PostList';
 
@@ -52,7 +52,7 @@ export default class extends React.Component {
           image={author.profileImage}
         />
 
-        <AuthorInfo {...author} isBanner />
+        <AuthorList authors={[author]} isBanner />
 
         <div className="author-content">
           <PostList initialPosts={posts} count={postCount} filters={{ authorSlug: author.slug }} />

@@ -8,7 +8,7 @@ import { formatDate } from '../utils';
 const FeaturedPost = ({ slug, title, featuredImage, categories, published, summary }) => (
   <div className="featured-article">
     <div className="article-container">
-      <a href={`/post/${slug}`}>
+      <a href={`${ROUTE_PATHS.posts}/${slug}`}>
         <div className="image-container" style={{ backgroundImage: `url(${featuredImage})` }} />
       </a>
 
