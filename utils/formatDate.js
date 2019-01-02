@@ -1,16 +1,4 @@
-import isPlainObject from 'lodash/isPlainObject';
-import mapValues from 'lodash/mapValues';
-import mapKeys from 'lodash/mapKeys';
-import camelCase from 'lodash/camelCase';
 import isNil from 'lodash/isNil';
-
-export const camlizeKeysDeep = obj => {
-  if (isPlainObject(obj)) {
-    return mapKeys(mapValues(obj, camlizeKeysDeep), (_, key) => camelCase(key));
-  }
-
-  return obj;
-};
 
 const MONTH_NAMES = [
   'January',
@@ -27,7 +15,7 @@ const MONTH_NAMES = [
   'December'
 ];
 
-export const formatDate = dateLike => {
+export default dateLike => {
   const date = new Date(dateLike);
 
   if (isNil(dateLike) || isNaN(date)) {
