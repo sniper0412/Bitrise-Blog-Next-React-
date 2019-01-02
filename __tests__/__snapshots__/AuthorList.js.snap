@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthorList component renders correctly 1`] = `
+<div
+  className="author-info-container"
+>
+  <div
+    className="author-info"
+  >
+    <div
+      className="author-container"
+    >
+      <img
+        alt="Bender Rodríguez avatar"
+        src="http://bender.img"
+      />
+      <div
+        className="name-and-title"
+      >
+        <a
+          href="/authors/slug"
+        >
+          Bender
+           
+          Rodríguez
+        </a>
+        <p>
+          Chief Bending Robot
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AuthorList component renders correctly in banner mode 1`] = `
+<div
+  className="author-header-container"
+>
+  <div
+    className="all-articles"
+  >
+    all articles by
+  </div>
+  <div
+    className="author-info"
+  >
+    <div
+      className="author-container"
+    >
+      <img
+        alt="Bender Rodríguez avatar"
+        src="http://bender.img"
+      />
+      <div
+        className="name-and-title"
+      >
+        <a
+          href="/authors/slug"
+        >
+          Bender
+           
+          Rodríguez
+        </a>
+        <p>
+          Chief Bending Robot
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

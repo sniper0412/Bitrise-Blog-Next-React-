@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubNav component renders correctly 1`] = `
+<div
+  className="categories"
+>
+  <div
+    className="category-select-wrapper"
+    onClick={[Function]}
+  >
+    <span
+      className="isvg loading"
+    />
+    <button
+      className="category-select-mobile category-select"
+    >
+      filter by category
+    </button>
+    <div
+      className="dropdown-arrow-container closed"
+    >
+      <span
+        className="isvg loading"
+      />
+    </div>
+  </div>
+  <div
+    className="content-wrapper"
+  >
+    <div
+      className="search-mobile"
+    >
+      <form
+        action="/search"
+        className="search-wrapper"
+      >
+        <span
+          className="isvg loading"
+        />
+        <input
+          name="q"
+          placeholder="Search articles"
+          type="text"
+        />
+      </form>
+    </div>
+    <a
+      className="category home"
+      href="/"
+      title="Home"
+    >
+      <span
+        className="isvg loading"
+      />
+      <span>
+        Home
+      </span>
+    </a>
+    <a
+      className="category"
+      href="/categories/category-1"
+      title="category 1"
+    >
+      category 1
+    </a>
+    <a
+      className="category"
+      href="/categories/category-2"
+      title="category 2"
+    >
+      category 2
+    </a>
+    <div
+      className="search-container desktop"
+    >
+      <form
+        action="/search"
+        className="search-wrapper"
+      >
+        <span
+          className="isvg loading"
+        />
+        <input
+          name="q"
+          placeholder="Search articles"
+          type="text"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MetaTags component renders correctly with custom props 1`] = `null`;
+
+exports[`MetaTags component renders correctly with defaults 1`] = `null`;

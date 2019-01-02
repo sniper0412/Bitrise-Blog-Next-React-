@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SocialIcons component renders correctly 1`] = `
+<div
+  className="share-article"
+>
+  <div
+    className="social-icons"
+  >
+    <h3>
+      Share this article
+    </h3>
+    <button
+      className="facebookShareButton"
+      onClick={[Function]}
+    >
+      <div
+        className="fb-container"
+      >
+        <span
+          className="isvg loading"
+        />
+      </div>
+    </button>
+    <button
+      className="twitterShareButton"
+      onClick={[Function]}
+    >
+      <div
+        className="twitter-container"
+      >
+        <span
+          className="isvg loading"
+        />
+      </div>
+    </button>
+    <button
+      className="linkedInShareButton"
+      onClick={[Function]}
+    >
+      <div
+        className="linkedin-container"
+      >
+        <span
+          className="isvg loading"
+        />
+      </div>
+    </button>
+    <button
+      className="yCombinatorShareButton"
+      onClick={[Function]}
+    >
+      <div
+        className="yc-container"
+      >
+        <span
+          className="isvg loading"
+        />
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`SocialIcons component renders vertically 1`] = `
+<div
+  className="share-article-vertical"
+>
+  <div
+    className="social-icons"
+  >
+    <h3>
+      Share
+    </h3>
+    <button
+      className="facebookShareButton"
+      onClick={[Function]}
+    >
+      <div
+        className="fb-container"
+      >
+        <span
+          className="isvg loading"
+        />
+      </div>
+    </button>
+    <button
+      className="twitterShareButton"
+      onClick={[Function]}
+    >
+      <div
+        className="twitter-container"
+      >
+        <span
+          className="isvg loading"
+        />
+      </div>
+    </button>
+    <button
+      className="linkedInShareButton"
+      onClick={[Function]}
+    >
+      <div
+        className="linkedin-container"
+      >
+        <span
+          className="isvg loading"
+        />
+      </div>
+    </button>
+    <button
+      className="yCombinatorShareButton"
+      onClick={[Function]}
+    >
+      <div
+        className="yc-container"
+      >
+        <span
+          className="isvg loading"
+        />
+      </div>
+    </button>
+  </div>
+</div>
+`;

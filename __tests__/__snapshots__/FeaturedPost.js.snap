@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeaturedPost component renders correctly 1`] = `
+<div
+  className="featured-article"
+>
+  <div
+    className="article-container"
+  >
+    <a
+      href="/posts/posts-1"
+    >
+      <div
+        className="image-container"
+        style={
+          Object {
+            "backgroundImage": "url(http://post-1.img)",
+          }
+        }
+      />
+    </a>
+    <div
+      className="article"
+    >
+      <div
+        className="article-categories"
+      >
+        <a
+          href="/tags/featured"
+        >
+          <p
+            className="category tag"
+          >
+            featured
+          </p>
+        </a>
+        <a
+          className="category"
+          href="/categories/category-1"
+        >
+          category 1
+        </a>
+        <a
+          className="category"
+          href="/categories/category-2"
+        >
+          category 2
+        </a>
+      </div>
+      <h2>
+        <a
+          href="/posts/posts-1"
+        >
+          Post 1
+        </a>
+      </h2>
+      <h3>
+        Published on 
+        January 2, 2019
+      </h3>
+      <p>
+        Post 1 summary
+      </p>
+      <div
+        className="default-button more"
+      >
+        <a
+          className="read-more"
+          href="/posts/posts-1"
+          title="read more..."
+        >
+          <div
+            className="button-content-wrapper"
+          >
+            <span>
+              Read more
+            </span>
+            <span
+              className="isvg loading"
+            />
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

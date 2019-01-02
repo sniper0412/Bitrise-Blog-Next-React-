@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation component renders correctly 1`] = `
+<nav
+  className="menu"
+>
+  <div
+    className="menu-content"
+  >
+    <a
+      className="logo"
+      href="/"
+    >
+      <span
+        className="isvg loading"
+      />
+    </a>
+    <ul
+      className="menu-options"
+    >
+      <li
+        className="menu-option"
+      >
+        <a
+          href="https://www.bitrise.io/integrations? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+        >
+          Integrations
+        </a>
+      </li>
+      <li
+        className="menu-option"
+      >
+        <a
+          href="https://www.bitrise.io/pricing? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+        >
+          Pricing
+        </a>
+      </li>
+      <li
+        className="menu-option"
+      >
+        <a
+          href="https://www.bitrise.io/cli? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+        >
+          CLI
+        </a>
+      </li>
+      <li
+        className="menu-option"
+      >
+        <a
+          href="https://www.bitrise.io/contact? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+        >
+          Contact
+        </a>
+      </li>
+      <li
+        className="menu-option"
+      >
+        <a
+          href="http://devcenter.bitrise.io? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+        >
+          Docs
+        </a>
+      </li>
+      <li
+        className="side-menu-options"
+      >
+        <ul>
+          <li
+            className="side-menu-option login"
+          >
+            <a
+              href="https://www.bitrise.io/users/sign_in? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+            >
+              Log in
+            </a>
+          </li>
+          <li
+            className="side-menu-option signup"
+          >
+            <a
+              href="https://www.bitrise.io/users/sign_in? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+            >
+              Sign up!
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <button
+      className="burger"
+      onClick={[Function]}
+    >
+      <span
+        className="isvg loading"
+      />
+    </button>
+  </div>
+</nav>
+`;
+
+exports[`Navigation component renders correctly with burger menu clicked 1`] = `
+<nav
+  className="menu"
+>
+  <div
+    className="menu-content"
+  >
+    <a
+      className="logo"
+      href="/"
+    >
+      <span
+        className="isvg loading"
+      />
+    </a>
+    <ul
+      className="menu-options opened"
+    >
+      <li
+        className="menu-option"
+      >
+        <a
+          href="https://www.bitrise.io/integrations? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+        >
+          Integrations
+        </a>
+      </li>
+      <li
+        className="menu-option"
+      >
+        <a
+          href="https://www.bitrise.io/pricing? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+        >
+          Pricing
+        </a>
+      </li>
+      <li
+        className="menu-option"
+      >
+        <a
+          href="https://www.bitrise.io/cli? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+        >
+          CLI
+        </a>
+      </li>
+      <li
+        className="menu-option"
+      >
+        <a
+          href="https://www.bitrise.io/contact? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+        >
+          Contact
+        </a>
+      </li>
+      <li
+        className="menu-option"
+      >
+        <a
+          href="http://devcenter.bitrise.io? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+        >
+          Docs
+        </a>
+      </li>
+      <li
+        className="side-menu-options"
+      >
+        <ul>
+          <li
+            className="side-menu-option login"
+          >
+            <a
+              href="https://www.bitrise.io/users/sign_in? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+            >
+              Log in
+            </a>
+          </li>
+          <li
+            className="side-menu-option signup"
+          >
+            <a
+              href="https://www.bitrise.io/users/sign_in? utm_source=bitriseblog&utm_medium=web&utm_campaign=static"
+            >
+              Sign up!
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <button
+      className="burger open"
+      onClick={[Function]}
+    >
+      <span
+        className="isvg loading"
+      />
+    </button>
+  </div>
+</nav>
+`;

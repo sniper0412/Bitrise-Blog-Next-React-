@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hero component renders correctly 1`] = `
+<div
+  className="hero"
+>
+  <div
+    className="content-wrapper"
+  >
+    <div
+      className="hero-inner"
+    >
+      <div
+        className="newsletter"
+      >
+        <h1>
+          Bitrise Blog
+        </h1>
+        <div
+          className="text"
+        >
+          <p>
+            Articles about Continuous Integration & Delivery, automation, iOS code signing, DevOps, and awesome tech
+          </p>
+          <div
+            className="subscription"
+          >
+            <div
+              className="subscription-form"
+            >
+              <div
+                className="subscription-wrapper"
+              >
+                <div
+                  className="email-container"
+                >
+                  <input
+                    className=""
+                    id="email-address"
+                    name="email"
+                    onChange={[Function]}
+                    placeholder="Your email"
+                    type="email"
+                  />
+                </div>
+                <button
+                  className="subscribe-button"
+                  onClick={[Function]}
+                >
+                  Subscribe
+                </button>
+              </div>
+              <div
+                className="subscription-wrapper success hidden"
+              >
+                <div
+                  className="success-container"
+                >
+                  <div
+                    className="check-wrapper"
+                  >
+                    <span
+                      className="isvg loading"
+                    />
+                  </div>
+                  <p />
+                </div>
+              </div>
+            </div>
+            <a
+              className="feed"
+              href="/atom"
+              target="blank"
+              value=" "
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

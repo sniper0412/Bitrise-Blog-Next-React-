@@ -24,10 +24,9 @@ export const PostType = {
   body: PropTypes.string,
   categories: PropTypes.arrayOf(PropTypes.shape(CategoryType)),
   tags: PropTypes.array,
-  summary: PropTypes.string
-
+  summary: PropTypes.string,
+  published: PropTypes.string
   // 'url',
   // 'created',
-  // 'published',
   // 'status'
 };
