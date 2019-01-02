@@ -941,6 +941,10 @@ h2 {
 
     button {
       width: 40px;
+
+      & span {
+        margin: 0;
+      }
     }
 
     &.hidden {

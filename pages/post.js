@@ -2,14 +2,16 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Butter from 'buttercms';
 import Head from 'next/head';
+import upperFirst from 'lodash/upperFirst';
 
 import { fetchAuthor } from '../services/butter';
-import { camlizeKeysDeep, parseMetaDescription } from '../utils';
+import { camlizeKeysDeep, parseMetaDescription, formatDate } from '../utils';
 import { PostType } from '../types';
 import { ROUTE_PATHS } from '../config';
 
 import MetaTags from '../components/MetaTags';
 import AuthorList from '../components/AuthorList';
+import SocialIcons from '../components/SocialIcons';
 import TryBitrise from '../components/TryBitrise';
 
 export default class extends React.Component {
@@ -58,16 +60,36 @@ export default class extends React.Component {
           <AuthorList authors={authors} />
 
           <h1 className="post-title">{post.title}</h1>
-          <div className="publish-date-and-tags">{/* content */}</div>
+          <div className="publish-date-and-tags">
+            <p className="publish-date">{formatDate(post.published)}</p>
+            {post.categories.map(({ slug, name }) => (
+              <Fragment key={slug}>
+                <p className="divider-slash">/</p>
+                <a className="category-element" href={`${ROUTE_PATHS.categories}/${slug}`}>
+                  {upperFirst(name)}
+                </a>
+              </Fragment>
+            ))}
+
+            {post.tags.map(({ slug, name }) => (
+              <Fragment key={slug}>
+                <p className="divider-slash">/</p>
+                <a className="category-element tag-element" href={`${ROUTE_PATHS.categories}/${slug}`}>
+                  {upperFirst(name)}
+                </a>
+              </Fragment>
+            ))}
+          </div>
           <div className="post-featured-image">
             <img src={post.featuredImage} alt={post.title} />
           </div>
           <div className="post-body-wrapper">
-            <div className="share-article-vertical" />
+            <SocialIcons vertical postTitle={post.title} />
             <div className="post-body">
               <div dangerouslySetInnerHTML={{ __html: post.body }} />
             </div>
           </div>
+          <SocialIcons postTitle={post.title} />
         </div>
         {enableDisqus && <div id="disqus_thread" className="disqus-container" />}
         <TryBitrise />
