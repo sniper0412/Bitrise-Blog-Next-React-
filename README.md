@@ -7,7 +7,7 @@ Using NextJS and React
 - `cp .env.example .env`
 - Update the `.env` file
 - `npm install`
-- `npm start`
+- `npm start` (or `PORT=1234 npm start`)
 - Navigate to [localhost:3000](http://localhost:3000)
 
 ## Sitemap

@@ -7,9 +7,10 @@ const routes = require('./routes');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+const PORT = parseInt(process.env.PORT, 10) || 3000;
 
 app.prepare().then(() => {
-  createServer(async (req, res) => {
+  createServer((req, res) => {
     const parsedUrl = parse(req.url, true);
 
     const matchedRoute = routes.find(([path]) => path.test(parsedUrl.pathname));
@@ -19,8 +20,8 @@ app.prepare().then(() => {
     }
 
     return handle(req, res, parsedUrl);
-  }).listen(3000, err => {
+  }).listen(PORT, err => {
     if (err) throw err;
-    console.log('> Ready on http://localhost:3000');
+    console.log(`> Ready on http://localhost:${PORT}`);
   });
 });
