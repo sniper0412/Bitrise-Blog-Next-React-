@@ -27,11 +27,6 @@ export default class PostList extends React.Component {
     posts: []
   };
 
-  componentDidMount() {
-    const { initialPosts } = this.props;
-    this.setState({ posts: initialPosts });
-  }
-
   async loadMorePosts() {
     const { filters } = this.props;
     const { page, isLoading } = this.state;
@@ -50,18 +45,20 @@ export default class PostList extends React.Component {
   }
 
   render() {
-    const { count } = this.props;
+    const { count, initialPosts } = this.props;
     const { posts } = this.state;
+
+    const allPosts = [...initialPosts, ...posts];
 
     return (
       <Fragment>
-        <div id="articles-container" className="articles">
-          {posts.map((post, key) => (
+        <div className="articles">
+          {allPosts.map((post, key) => (
             <PostSummary key={key} {...post} defaultImagePath="/static/img/post-default-img.jpg" />
           ))}
         </div>
 
-        {count > posts.length && (
+        {count > allPosts.length && (
           <div className="default-button load-more" onClick={() => this.loadMorePosts()}>
             <span className="default-button__content">Load more</span>
           </div>
