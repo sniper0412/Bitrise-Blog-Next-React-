@@ -4,6 +4,7 @@ const mapKeys = require('lodash/mapKeys');
 const camelCase = require('lodash/camelCase');
 
 const { fetchPosts, searchPosts } = require('./services/butter');
+const routePaths = require('./route-paths');
 
 const redirectWithSlugConfig = (from, to) => [
   new Path(from),
@@ -11,10 +12,10 @@ const redirectWithSlugConfig = (from, to) => [
 ];
 
 module.exports = [
-  redirectWithSlugConfig('/posts/:slug', '/post'),
-  redirectWithSlugConfig('/categories/:slug', '/category'),
-  redirectWithSlugConfig('/tags/:slug', '/tag'),
-  redirectWithSlugConfig('/authors/:slug', '/author'),
+  redirectWithSlugConfig(`${routePaths.posts}/:slug`, '/post'),
+  redirectWithSlugConfig(`${routePaths.categories}/:slug`, '/category'),
+  redirectWithSlugConfig(`${routePaths.tags}/:slug`, '/tag'),
+  redirectWithSlugConfig(`${routePaths.authors}/:slug`, '/author'),
   [
     new Path('/fetch-posts'),
     async (app, req, res) => {

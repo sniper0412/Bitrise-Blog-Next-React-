@@ -4,7 +4,6 @@ exports[`PostList component renders correctly when it can load more 1`] = `
 Array [
   <div
     className="articles"
-    id="articles-container"
   >
     <div
       className="article-container"
@@ -64,7 +63,6 @@ Array [
 exports[`PostList component renders correctly when it cannot load more 1`] = `
 <div
   className="articles"
-  id="articles-container"
 >
   <div
     className="article-container"

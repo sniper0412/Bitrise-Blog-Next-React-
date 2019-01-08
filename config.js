@@ -1,7 +1,1 @@
-export const ROUTE_PATHS = {
-  posts: `/posts`,
-  categories: '/categories',
-  tags: '/tags',
-  authors: '/authors',
-  search: '/search'
-};
+export { default as ROUTE_PATHS } from './route-paths';

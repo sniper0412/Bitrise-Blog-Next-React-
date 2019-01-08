@@ -74,7 +74,7 @@ export default class extends React.Component {
             {post.tags.map(({ slug, name }) => (
               <Fragment key={slug}>
                 <p className="divider-slash">/</p>
-                <a className="category-element tag-element" href={`${ROUTE_PATHS.categories}/${slug}`}>
+                <a className="category-element tag-element" href={`${ROUTE_PATHS.tags}/${slug}`}>
                   {upperFirst(name)}
                 </a>
               </Fragment>

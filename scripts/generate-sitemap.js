@@ -117,7 +117,9 @@ const generateSitemap = async () => {
 
 console.time('done');
 generateSitemap().then(sitemap => {
-  writeFileSync('/tmp/sitemap.xml', sitemap.toString());
+  const filepath = process.argv[2] || '/tmp/sitemap.xml';
+  writeFileSync(filepath, sitemap.toString());
 
   console.timeEnd('done');
+  console.log(`Sitemap saved to ${filepath}`);
 });
