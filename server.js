@@ -13,9 +13,10 @@ app.prepare().then(() => {
   createServer((req, res) => {
     const parsedUrl = parse(req.url, true);
 
-    const matchedRoute = routes.find(([path]) => path.test(parsedUrl.pathname));
+    const matchedRoute = routes.find(([method, path]) => method === req.method && path.test(parsedUrl.pathname));
+
     if (matchedRoute) {
-      const [path, handler] = matchedRoute;
+      const [_, path, handler] = matchedRoute;
       return handler(app, req, res, path.test(parsedUrl.pathname));
     }
 

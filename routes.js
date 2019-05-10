@@ -4,11 +4,24 @@ const mapKeys = require('lodash/mapKeys');
 const camelCase = require('lodash/camelCase');
 
 const { fetchPosts, searchPosts } = require('./services/butter');
+const mailchimp = require('./services/mailchimp');
 const routePaths = require('./route-paths');
 
 const redirectWithSlugConfig = (from, to) => [
+  'GET',
   new Path(from),
   async (app, req, res, { slug }) => app.render(req, res, to, { slug })
+];
+
+const createAPIPath = (method, path, handler) => [
+  method,
+  new Path(path),
+  async (app, req, res, params) => {
+    const result = await handler(req, params);
+
+    res.setHeader('Content-Type', 'application/json');
+    return res.end(JSON.stringify(result));
+  }
 ];
 
 module.exports = [
@@ -16,31 +29,46 @@ module.exports = [
   redirectWithSlugConfig(`${routePaths.categories}/:slug`, '/category'),
   redirectWithSlugConfig(`${routePaths.tags}/:slug`, '/tag'),
   redirectWithSlugConfig(`${routePaths.authors}/:slug`, '/author'),
-  [
-    new Path('/fetch-posts'),
-    async (app, req, res) => {
-      const { query } = parse(req.url, true);
+  createAPIPath('GET', '/fetch-posts', async req => {
+    const { query } = parse(req.url, true);
+    const camelCaseQuery = mapKeys(query, (_, key) => camelCase(key));
 
-      const camelCaseQuery = mapKeys(query, (_, key) => camelCase(key));
+    let result;
+    if (query.query) {
+      result = await searchPosts(camelCaseQuery);
+    } else {
+      result = await fetchPosts(camelCaseQuery);
+    }
 
-      let posts;
+    const {
+      data: { data: posts }
+    } = result;
 
-      if (query.query) {
-        const {
-          data: { data }
-        } = await searchPosts(camelCaseQuery);
-
-        posts = data;
-      } else {
-        const {
-          data: { data }
-        } = await fetchPosts(camelCaseQuery);
-
-        posts = data;
+    return posts;
+  }),
+  createAPIPath('POST', '/subscribe/:email', async (req, { email }) => {
+    try {
+      if (await mailchimp.isMemberWithEmailAlreadySubscribed(email)) {
+        return {
+          success: false,
+          message: 'Already subscribed!'
+        };
       }
 
-      res.setHeader('Content-Type', 'application/json');
-      return res.end(JSON.stringify(posts));
+      if (await mailchimp.subscribeMember(email)) {
+        return { success: true };
+      }
+
+      return {
+        success: false,
+        message: 'Please provide a valid email address'
+      };
+    } catch (error) {
+      console.error(error.message);
+      return {
+        success: false,
+        message: 'An unexpected error occured'
+      };
     }
-  ]
+  })
 ];

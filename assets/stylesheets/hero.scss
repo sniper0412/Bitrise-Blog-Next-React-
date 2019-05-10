@@ -172,8 +172,14 @@
               @include transition(background-color $default_transitiontime_short);
 
               &.subscribe-button {
-                &:hover {
+                transition: background-color 0.25s;
+
+                &:not([disabled]):hover {
                   background-color: $v3_default_neon;
+                }
+
+                &[disabled] {
+                  background-color: #777;
                 }
 
                 @media screen and (max-width: 547px) {

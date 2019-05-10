@@ -4,88 +4,74 @@ import SVG from 'react-inlinesvg';
 
 export default class Subscription extends React.Component {
   state = {
-    email: null,
-    isSuccess: false,
-    isError: false,
-    successMessage: null,
-    errorMessage: null
+    email: '',
+    success: null,
+    error: null,
+    isLoading: false
   };
 
-  subscribeUser() {
+  subscribeUser = async evt => {
+    evt.preventDefault();
+    this.setState({ isLoading: true });
+
     const { email } = this.state;
 
-    // TODO: subscribeUserToNewsletter is undefined
-    subscribeUserToNewsletter(email).then(responsMessage => {
-      switch (responsMessage) {
-        case 'ok':
-          this.setState({
-            isSuccess: true,
-            isError: false,
-            successMessage: 'All set! Thanks for signing up!',
-            errorMessage: null
-          });
-          break;
-        case 'already subscribed':
-          this.setState({
-            isSuccess: true,
-            isError: false,
-            successMessage: 'You are already subscribed!',
-            errorMessage: null
-          });
-          break;
-        case 'invalid email':
-          this.setState({
-            isSuccess: false,
-            isError: true,
-            successMessage: null,
-            errorMessage: 'The email address is invalid'
-          });
-          break;
-        case 'empty email':
-          this.setState({
-            isSuccess: false,
-            isError: true,
-            successMessage: null,
-            errorMessage: 'Please give your email address'
-          });
-          break;
-        default:
-          this.setState({ isSuccess: false, isError: false, successMessage: null, errorMessage: null });
-      }
+    if (!email) {
+      return this.setState({
+        success: null,
+        error: 'Please provide an email address',
+        isLoading: false
+      });
+    }
+
+    const { success, message } = await fetch(`/subscribe/${email}`, { method: 'POST' }).then(res => res.json());
+
+    if (success) {
+      return this.setState({
+        success: 'All set! Thanks for signing up!',
+        error: null,
+        isLoading: false
+      });
+    }
+
+    return this.setState({
+      success: null,
+      error: message,
+      isLoading: false
     });
-  }
+  };
 
   render() {
-    const { isError, isSuccess, errorMessage, successMessage } = this.state;
+    const { success, error, isLoading } = this.state;
 
     return (
       <div className="subscription">
-        <div className="subscription-form">
+        <form className="subscription-form" onSubmit={this.subscribeUser}>
           <div className="subscription-wrapper">
             <div className="email-container">
               <input
                 id="email-address"
-                className={cx({ error: isError })}
+                className={cx({ error: !!error })}
                 type="email"
                 name="email"
                 placeholder="Your email"
                 onChange={({ target: { value: email } }) => this.setState({ email })}
               />
-              {isError && <p>{errorMessage}</p>}
+              {error && <p>{error}</p>}
             </div>
-            <button className="subscribe-button" onClick={() => this.subscribeUser()}>
+            <button className="subscribe-button" disabled={isLoading}>
               Subscribe
             </button>
           </div>
-          <div className={cx('subscription-wrapper', 'success', { hidden: !isSuccess })}>
+          <div className={cx('subscription-wrapper', 'success', { hidden: !success })}>
             <div className="success-container">
               <div className="check-wrapper">
                 <SVG src="/static/svg/check.svg" />
               </div>
-              <p>{successMessage}</p>
+              <p>{success}</p>
             </div>
           </div>
-        </div>
+        </form>
         <a href="/atom" className="feed" value=" " target="blank" />
       </div>
     );
