@@ -40,11 +40,22 @@ const fetchAuthor = ({ slug }) =>
     .author.retrieve(slug)
     .then(unpackButterResp);
 
+const fetchFeed = feedType =>
+  butter()
+    .feed.retrieve(feedType)
+    .then(unpackButterResp)
+    .then(xml => xml.replace(/[^\x20-\x7E]/g, ''));
+
+const fetchRSS = () => fetchFeed('rss');
+const fetchAtom = () => fetchFeed('atom');
+
 module.exports = {
   fetchPosts,
   searchPosts,
   fetchCategories,
   fetchCategory,
   fetchTag,
-  fetchAuthor
+  fetchAuthor,
+  fetchRSS,
+  fetchAtom
 };

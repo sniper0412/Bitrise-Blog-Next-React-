@@ -3,7 +3,7 @@ const Path = require('path-parser').default;
 const mapKeys = require('lodash/mapKeys');
 const camelCase = require('lodash/camelCase');
 
-const { fetchPosts, searchPosts } = require('./services/butter');
+const butter = require('./services/butter');
 const mailchimp = require('./services/mailchimp');
 const routePaths = require('./route-paths');
 
@@ -24,6 +24,17 @@ const createAPIPath = (method, path, handler) => [
   }
 ];
 
+const createXMLPath = (path, handler) => [
+  'GET',
+  new Path(path),
+  async (_app, _req, res) => {
+    const result = await handler();
+
+    res.setHeader('Content-Type', 'application/xml');
+    return res.end(result);
+  }
+];
+
 module.exports = [
   redirectWithSlugConfig(`${routePaths.posts}/:slug`, '/post'),
   redirectWithSlugConfig(`${routePaths.categories}/:slug`, '/category'),
@@ -35,9 +46,9 @@ module.exports = [
 
     let result;
     if (query.query) {
-      result = await searchPosts(camelCaseQuery);
+      result = await butter.searchPosts(camelCaseQuery);
     } else {
-      result = await fetchPosts(camelCaseQuery);
+      result = await butter.fetchPosts(camelCaseQuery);
     }
 
     const {
@@ -70,5 +81,7 @@ module.exports = [
         message: 'An unexpected error occured'
       };
     }
-  })
+  }),
+  createXMLPath('/rss', butter.fetchRSS),
+  createXMLPath('/atom', butter.fetchAtom)
 ];
