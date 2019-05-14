@@ -52,7 +52,7 @@
     }
   }
 
-  a {
+  a.category {
     background-color: #e9d8f7;
     text-transform: uppercase;
     color: $v3_default_purple;
@@ -145,7 +145,7 @@
       @include display-flex;
       @include flex-direction(column);
       position: fixed;
-      top: -270px;
+      top: -320px;
       width: 100%;
       padding: 0;
       height: auto;
@@ -153,88 +153,13 @@
       max-height: calc(100% - 112px);
 
       &.opened {
-        top: 112px;
+        top: 128px;
       }
     }
 
-    .search-mobile {
-      @include display-flex;
-      @include align-items(center);
-      @include flex-grow(1);
-      background-color: $v3_default_purple;
-      height: 45px;
-      padding-left: 28px;
-
-      input {
-        margin-left: 10px;
-        font-size: 12px;
-        background-color: transparent;
-        border: none;
-        width: 210px;
-        @include no-focus-styling;
-        color: white;
-
-        &::placeholder {
-          color: white;
-        }
-      }
-
-      svg {
-        @include size(15px);
-        fill: white;
-      }
-    }
-
-    @include media-above-inclusive-big {
-      .search-mobile {
-        display: none;
-      }
-    }
-
-    .search-container {
-      @include display-flex;
-      @include align-items(center);
-      @include flex-grow(1);
-      background-color: #e9d8f7;
-
-      @include media-below-big {
-        display: none;
-      }
-
-      .search-wrapper {
-        @include display-flex;
-        @include align-items(center);
-        border-bottom: 1px solid $v3_default_purple;
-        @include box-sizing(border-box);
-
-        @include media-above-inclusive-big {
-          margin-left: auto;
-          padding-bottom: 5px;
-        }
-
-        @include media-below-big {
-          margin-left: 28px;
-          height: 45px;
-        }
-
-        input {
-          margin-left: 10px;
-          font-size: 12px;
-          background-color: transparent;
-          border: none;
-          width: 210px;
-          @include no-focus-styling;
-          color: $v3_default_purple;
-          font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
-
-          &::placeholder {
-            color: #b99dd2;
-          }
-        }
-      }
-      svg {
-        @include size(15px);
-        fill: $v3_default_purple;
+    @include media-below-small {
+      &.opened {
+        top: 108px;
       }
     }
   }

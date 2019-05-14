@@ -4,6 +4,8 @@ import cx from 'classnames';
 
 import { ROUTE_PATHS } from '../config';
 
+import Search from './Search';
+
 const Category = ({ data: { slug, name } }) => (
   <a href={`${ROUTE_PATHS.categories}/${slug}`} title={name} className="category">
     {name}
@@ -27,13 +29,6 @@ export default class SubNav extends React.Component {
     const { categories } = this.props;
     const { isDropDownOpen } = this.state;
 
-    const searchForm = (
-      <form action="/search" className="search-wrapper">
-        <SVG src="/static/svg/search.svg" />
-        <input name="q" type="text" placeholder="Search articles" />
-      </form>
-    );
-
     return (
       <div className="categories">
         <div className="category-select-wrapper" onClick={() => this.onSelectCategory()}>
@@ -44,7 +39,9 @@ export default class SubNav extends React.Component {
           </div>
         </div>
         <div className={cx('content-wrapper', { opened: isDropDownOpen })}>
-          <div className="search-mobile">{searchForm}</div>
+          <div className="search-mobile">
+            <Search />
+          </div>
           <a href="/" title="Home" className="category home">
             <SVG src="/static/svg/home_button.svg" />
             <span>Home</span>
@@ -52,7 +49,9 @@ export default class SubNav extends React.Component {
           {categories.map(category => (
             <Category data={category} key={category.slug} />
           ))}
-          <div className="search-container desktop">{searchForm}</div>
+          <div className="search-container desktop">
+            <Search />
+          </div>
         </div>
       </div>
     );

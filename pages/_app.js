@@ -56,6 +56,13 @@ export default class extends App {
             href="/static/icons/apple-touch-icon-152x152.png"
             sizes="152x152"
           />
+
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css"
+            integrity="sha256-JQ2nnTmybhOWSjfV3sa8mG0ZVhTCcORER4cyXc5HL10="
+            crossorigin="anonymous"
+          />
         </Head>
         <Navigation />
         <SubNav categories={categories} />

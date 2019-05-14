@@ -8,18 +8,18 @@
     "dev": "nodemon server.js",
     "test": "NODE_ENV=test jest",
     "test:watch": "npm test -- --watch",
-    "sitemap": "node scripts/generate-sitemap.js"
+    "sitemap": "node scripts/generate-sitemap.js",
+    "algolia": "node scripts/index-algolia.js"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@zeit/next-bundle-analyzer": "^0.1.2",
-    "algoliasearch": "^3.33.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
+    "babel-jest": "^24.8.0",
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.12.1",
-    "jest": "^23.6.0",
+    "enzyme-adapter-react-16": "^1.13.0",
+    "jest": "^24.8.0",
     "nodemon": "^1.19.0",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.8.6",
@@ -28,16 +28,19 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
+    "algoliasearch": "^3.33.0",
     "buttercms": "^1.1.4",
     "classnames": "^2.2.6",
-    "dotenv": "^6.2.0",
+    "dotenv": "^8.0.0",
+    "html-to-text": "^5.1.1",
     "lodash": "^4.17.11",
     "mailchimp-api-v3": "^1.13.0",
-    "next": "^7.0.3",
+    "next": "^8.1.0",
     "node-sass": "^4.12.0",
     "path-parser": "^4.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-inlinesvg": "^0.8.4"
+    "react-inlinesvg": "^0.8.4",
+    "react-instantsearch-dom": "^5.5.0"
   }
 }

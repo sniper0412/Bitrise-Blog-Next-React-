@@ -15,3 +15,9 @@ Using NextJS and React
 You can generate a sitemap running `npm run sitemap`.
 
 If you'd like to use a custom path, use `npm run sitemap -- /your/custom/path/sitemap.xml`.
+
+## Algolia
+
+The site uses Algolia instant search, to reindex the posts run `npm run algolia`
+
+*Note:* Make sure you have the proper `ALGOLIA_*` environment variables set.

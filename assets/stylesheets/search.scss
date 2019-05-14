@@ -1,0 +1,139 @@
+.search-container {
+  @include display-flex;
+  @include align-items(center);
+  @include flex-grow(1);
+  background-color: #e9d8f7;
+  position: relative;
+
+  @include media-below-big {
+    display: none;
+  }
+
+  .search-wrapper,
+  .ais-InstantSearch__root {
+    width: 100%;
+    form {
+      @include display-flex;
+      @include align-items(center);
+      border-bottom: 1px solid $v3_default_purple;
+      @include box-sizing(border-box);
+
+      @include media-above-inclusive-big {
+        margin-left: auto;
+        padding-bottom: 5px;
+      }
+
+      @include media-below-big {
+        margin-left: 28px;
+        height: 45px;
+      }
+
+      input {
+        margin-left: 10px;
+        font-size: 12px;
+        background-color: transparent;
+        border: none;
+        width: 210px;
+        @include no-focus-styling;
+        color: $v3_default_purple;
+        font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+
+        &::placeholder {
+          color: #b99dd2;
+        }
+      }
+    }
+
+    .ais-Hits {
+      width: 100%;
+      position: absolute;
+      background-color: #e9d8f7;
+      font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+      font-size: 12px;
+
+      &.no-result {
+        padding: 10px;
+        color: $v3_default_purple_mediumlight;
+        font-style: italic;
+      }
+
+      &-list {
+        @include display-flex;
+        @include flex_direction(column);
+      }
+
+      &-item {
+        &:hover {
+          background: #d3c5e0;
+        }
+        a {
+          box-sizing: border-box;
+          width: 100%;
+          display: inline-block;
+          padding: 10px;
+          color: $v3_default_purple;
+          text-decoration: none;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .ais-Highlight mark {
+        background: unset;
+        color: inherit;
+        text-decoration: underline;
+      }
+    }
+  }
+  svg {
+    @include size(15px);
+    fill: $v3_default_purple;
+  }
+}
+
+.search-mobile {
+  @include display-flex;
+  @include align-items(center);
+  @include flex-grow(1);
+  background-color: $v3_default_purple;
+  height: 45px;
+  padding: 0 28px;
+
+  .ais-InstantSearch__root {
+    width: 100%;
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+
+    input {
+      flex-grow: 1;
+      margin-left: 10px;
+      font-size: 12px;
+      background-color: transparent;
+      border: none;
+      width: 210px;
+      @include no-focus-styling;
+      color: white;
+
+      &::placeholder {
+        color: white;
+      }
+    }
+  }
+
+  svg {
+    @include size(15px);
+    fill: white;
+  }
+
+  .ais-Hits {
+    display: none;
+  }
+
+  @include media-above-inclusive-big {
+    display: none;
+  }
+}
