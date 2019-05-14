@@ -12,9 +12,9 @@ import {
 import Link from 'next/link';
 import get from 'lodash/get';
 
-import { ALGOLIA_API_KEY, ALGOLIA_APP_KEY, ALGOLIA_INDEX } from '../config';
+import { ALGOLIA_PUBLIC_API_KEY, ALGOLIA_APP_KEY, ALGOLIA_INDEX } from '../config';
 
-const searchClient = algoliasearch(ALGOLIA_APP_KEY, ALGOLIA_API_KEY);
+const searchClient = algoliasearch(ALGOLIA_APP_KEY, ALGOLIA_PUBLIC_API_KEY);
 
 const Hit = ({ hit }) => (
   <Link href={`/posts/${hit.slug}`}>
