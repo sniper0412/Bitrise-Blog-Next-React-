@@ -4,24 +4,6 @@ const mailchimp = () => new Mailchimp(process.env.MAILCHIMP_API_TOKEN);
 
 const getNewsletterListId = () => process.env.MAILCHIMP_LIST_ID;
 
-// const list = listId =>
-//   mailchimp().get({
-//     path: `/lists/${listId}`
-//   });
-
-// const members = listId =>
-//   mailchimp().get({
-//     path: `/lists/${listId}/members`
-//   });
-
-// const getMemberByEmail = (listId, email) =>
-//   mailchimp().get({
-//     path: `/lists/${listId}/members`,
-//     query: {
-//       fields: ['email']
-//     }
-//   });
-
 const searchMember = (listId, query) =>
   mailchimp().get({
     path: '/search-members',
