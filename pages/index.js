@@ -45,8 +45,16 @@ export default class extends React.Component {
   render() {
     const { posts, featuredPost, postCount } = this.props;
 
+    var iframeStyle = {
+      display: 'none',
+      visibility: 'hidden'
+    };
+    
     return (
       <Fragment>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZK32GR"
+        height="0" width="0" style={iframeStyle
+        }></iframe></noscript>
         <MetaTags />
         <Hero />
 
