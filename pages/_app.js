@@ -30,6 +30,13 @@ export default class extends App {
 
     return (
       <Container>
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZK32GR"
+                  height="0"
+                  width="0"
+                  style={{ display: 'none', visibility: 'hidden' }}>
+          </iframe>
+        </noscript>
         <Head>
           <script async src="https://www.googletagmanager.com/gtag/js?id=UA-53276411-1"></script>
           <script
