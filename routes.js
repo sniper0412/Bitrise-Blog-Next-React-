@@ -1,4 +1,6 @@
 const { parse } = require('url');
+const fs = require('fs');
+const { join: joinPath } = require('path');
 const Path = require('path-parser').default;
 const mapKeys = require('lodash/mapKeys');
 const camelCase = require('lodash/camelCase');
@@ -83,5 +85,13 @@ module.exports = [
     }
   }),
   createXMLPath('/rss', butter.fetchRSS),
-  createXMLPath('/atom', butter.fetchAtom)
+  createXMLPath('/atom', butter.fetchAtom),
+  [
+    'GET',
+    new Path(`/robots.txt`),
+    async (_app, _req, res) => {
+      res.setHeader('Content-Type', 'text/plain');
+      fs.createReadStream(joinPath(__dirname, 'static', 'robots.txt')).pipe(res);
+    }
+  ]
 ];
