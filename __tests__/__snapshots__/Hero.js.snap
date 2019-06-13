@@ -25,8 +25,9 @@ exports[`Hero component renders correctly 1`] = `
           <div
             className="subscription"
           >
-            <div
+            <form
               className="subscription-form"
+              onSubmit={[Function]}
             >
               <div
                 className="subscription-wrapper"
@@ -45,7 +46,7 @@ exports[`Hero component renders correctly 1`] = `
                 </div>
                 <button
                   className="subscribe-button"
-                  onClick={[Function]}
+                  disabled={false}
                 >
                   Subscribe
                 </button>
@@ -66,7 +67,7 @@ exports[`Hero component renders correctly 1`] = `
                   <p />
                 </div>
               </div>
-            </div>
+            </form>
             <a
               className="feed"
               href="/atom"
