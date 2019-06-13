@@ -7,7 +7,7 @@
     "_dev": "next",
     "dev": "nodemon server.js",
     "test": "NODE_ENV=test jest",
-    "test:watch": "npm test -- --watch",
+    "test:watch": "yarn test --watch",
     "sitemap": "node scripts/generate-sitemap.js",
     "algolia": "node scripts/index-algolia.js"
   },
