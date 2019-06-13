@@ -1,9 +1,14 @@
 const { parse } = require('url');
 const fs = require('fs');
 const { join: joinPath } = require('path');
+const request = require('request');
 const Path = require('path-parser').default;
 const mapKeys = require('lodash/mapKeys');
 const camelCase = require('lodash/camelCase');
+
+const {
+  parsed: { AWS_S3_BUCKET }
+} = require('dotenv').config();
 
 const butter = require('./services/butter');
 const mailchimp = require('./services/mailchimp');
@@ -93,5 +98,10 @@ module.exports = [
       res.setHeader('Content-Type', 'text/plain');
       fs.createReadStream(joinPath(__dirname, 'static', 'robots.txt')).pipe(res);
     }
+  ],
+  [
+    'GET',
+    new Path(`/sitemaps/sitemap.xml`),
+    async (_app, _req, res) => request(`https://s3.amazonaws.com/${AWS_S3_BUCKET}/sitemaps/sitemap.xml`).pipe(res)
   ]
 ];
