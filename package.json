@@ -8,7 +8,7 @@
     "dev": "nodemon server.js",
     "test": "NODE_ENV=test jest",
     "test:watch": "yarn test --watch",
-    "sitemap": "node scripts/generate-sitemap.js",
+    "sitemap": "node scripts/generate-sitemap",
     "algolia": "node scripts/index-algolia.js",
     "heroku-postbuild": "yarn run build"
   },
@@ -30,6 +30,7 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "algoliasearch": "^3.33.0",
+    "aws-sdk": "^2.474.0",
     "buttercms": "^1.1.4",
     "classnames": "^2.2.6",
     "dotenv": "^8.0.0",
