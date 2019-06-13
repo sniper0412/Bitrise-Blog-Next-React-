@@ -1,0 +1,70 @@
+format_version: '8'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: other
+workflows:
+  setup:
+    steps:
+      - script@1.1.5:
+          title: Setup
+          inputs:
+            - content: |
+                #!/bin/bash
+                set -ex
+                yarn
+  test:
+    before_run:
+      - setup
+    steps:
+      - script@1.1.5:
+          title: Run tests
+          inputs:
+            - content: |
+                #!/bin/bash
+                set -ex
+                yarn test
+  build:
+    before_run:
+      - setup
+    steps:
+      - script@1.1.5:
+          title: Build app
+          inputs:
+            - content: |
+                #!/bin/bash
+                set -ex
+                yarn build
+  analyze-bundle:
+    envs:
+      - ANALYZE: 'true'
+    steps:
+      - script@1.1.5:
+          title: Analyze webpack bundle
+          inputs:
+            - content: |
+                #!/bin/bash
+                set -ex
+                yarn build
+  up-dev:
+    before_run:
+      - setup
+    steps:
+      - script@1.1.5:
+          title: Start dev server
+          inputs:
+            - content: |
+                #!/bin/bash
+                set -ex
+                yarn start
+  up:
+    before_run:
+      - build
+    envs:
+      - NODE_ENV: production
+    steps:
+      - script@1.1.5:
+          title: Start server
+          inputs:
+            - content: |
+                #!/bin/bash
+                set -ex
+                yarn start
