@@ -12,9 +12,7 @@ Using NextJS and React
 
 ## Sitemap
 
-You can generate a sitemap running `yarn sitemap`.
-
-If you'd like to use a custom path, use `yarn sitemap -- /your/custom/path/sitemap.xml`.
+You can generate and upload a sitemap to S3 by running `yarn sitemap`.
 
 ## Algolia
 

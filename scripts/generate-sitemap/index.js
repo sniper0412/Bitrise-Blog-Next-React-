@@ -1,8 +1,9 @@
 require('dotenv').config();
 const { createSitemap } = require('sitemap');
-const { writeFileSync } = require('fs');
 const Butter = require('buttercms');
 const flattenDepth = require('lodash/flattenDepth');
+
+const s3Upload = require('./s3-upload');
 
 const butter = () => Butter(process.env.BUTTER_TOKEN);
 
@@ -116,10 +117,14 @@ const generateSitemap = async () => {
 };
 
 console.time('done');
-generateSitemap().then(sitemap => {
-  const filepath = process.argv[2] || '/tmp/sitemap.xml';
-  writeFileSync(filepath, sitemap.toString());
+generateSitemap()
+  .then(sitemap => {
+    console.log('Sitemap generated ... uploading');
+    console.timeLog('done');
 
-  console.timeEnd('done');
-  console.log(`Sitemap saved to ${filepath}`);
-});
+    return s3Upload('sitemaps/sitemap.xml', sitemap.toString());
+  })
+  .then(() => {
+    console.timeEnd('done');
+    console.log('Sitemap uploaded successfully');
+  });
