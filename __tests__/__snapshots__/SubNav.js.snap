@@ -30,19 +30,27 @@ exports[`SubNav component renders correctly 1`] = `
     <div
       className="search-mobile"
     >
-      <form
-        action="/search"
-        className="search-wrapper"
+      <div
+        className="ais-InstantSearch__root"
       >
-        <span
-          className="isvg loading"
-        />
-        <input
-          name="q"
-          placeholder="Search articles"
-          type="text"
-        />
-      </form>
+        <form
+          action="/search"
+          noValidate={true}
+          role="search"
+        >
+          <span
+            className="isvg loading"
+          />
+          <input
+            autoComplete="off"
+            name="q"
+            onChange={[Function]}
+            placeholder="Search articles"
+            type="search"
+            value=""
+          />
+        </form>
+      </div>
     </div>
     <a
       className="category home"
@@ -73,19 +81,27 @@ exports[`SubNav component renders correctly 1`] = `
     <div
       className="search-container desktop"
     >
-      <form
-        action="/search"
-        className="search-wrapper"
+      <div
+        className="ais-InstantSearch__root"
       >
-        <span
-          className="isvg loading"
-        />
-        <input
-          name="q"
-          placeholder="Search articles"
-          type="text"
-        />
-      </form>
+        <form
+          action="/search"
+          noValidate={true}
+          role="search"
+        >
+          <span
+            className="isvg loading"
+          />
+          <input
+            autoComplete="off"
+            name="q"
+            onChange={[Function]}
+            placeholder="Search articles"
+            type="search"
+            value=""
+          />
+        </form>
+      </div>
     </div>
   </div>
 </div>
