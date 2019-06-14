@@ -68,3 +68,14 @@ workflows:
                 #!/bin/bash
                 set -ex
                 yarn start
+  algolia:
+    before_run:
+      - setup
+    steps:
+      - script@1.1.5:
+          title: Index algolia
+          inputs:
+            - content: |
+                #!/bin/bash
+                set -ex
+                yarn algolia
