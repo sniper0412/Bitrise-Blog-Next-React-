@@ -20,8 +20,7 @@
     "jest": "^24.8.0",
     "nodemon": "^1.19.0",
     "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.8.6",
-    "sitemap": "^2.2.0"
+    "react-test-renderer": "^16.8.6"
   },
   "dependencies": {
     "@babel/core": "^7.4.4",
@@ -43,6 +42,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-inlinesvg": "^0.8.4",
-    "react-instantsearch-dom": "^5.5.0"
+    "react-instantsearch-dom": "^5.5.0",
+    "sitemap": "^2.2.0"
   }
 }
