@@ -1,5 +1,5 @@
-@import "default";
-@import "constants";
+@import 'default';
+@import 'constants';
 
 nav {
   $navbar-height: 83px;
@@ -16,7 +16,7 @@ nav {
   }
 
   &:before {
-    content: "";
+    content: '';
     @include position(absolute, 0, 0);
     @include size(100%);
     background-color: $v3_default_purple;
@@ -98,7 +98,11 @@ nav {
             li {
               margin-left: 10px;
               white-space: nowrap;
-              @include transition(border-color $default_transitiontime_short, color $default_transitiontime_short, background-color $default_transitiontime_short);
+              @include transition(
+                border-color $default_transitiontime_short,
+                color $default_transitiontime_short,
+                background-color $default_transitiontime_short
+              );
 
               a {
                 display: block;
@@ -109,7 +113,8 @@ nav {
                 @include border-radius($v3_default_radius);
                 border: 1px solid white;
 
-                &:hover, &:focus {
+                &:hover,
+                &:focus {
                   background-color: white;
                   a {
                     color: $v3_default_purple;
@@ -129,7 +134,8 @@ nav {
                 background-color: $v3_default_green;
                 border: 1px solid $v3_default_green;
 
-                &:hover, &:focus {
+                &:hover,
+                &:focus {
                   background-color: $v3_default_green_tint;
                   border-color: $v3_default_green_tint;
                 }
@@ -170,7 +176,8 @@ nav {
           padding-left: 0;
           list-style: none;
         }
-        li.menu-option, li.side-menu-option {
+        li.menu-option,
+        li.side-menu-option {
           border-bottom: 1px solid $v3_default_purple;
 
           a {
@@ -182,7 +189,8 @@ nav {
             text-decoration: none;
             @include transition(background-color $default_transitiontime_short);
 
-            &:hover, &:focus {
+            &:hover,
+            &:focus {
               background-color: $default_purpletint;
             }
           }
@@ -229,12 +237,15 @@ nav {
           }
         }
 
-        &:hover, &:focus, &.open {
+        &:hover,
+        &:focus,
+        &.open {
           background-color: $v3_default_purple_tint;
         }
 
         &.open {
-          &:hover, &:focus {
+          &:hover,
+          &:focus {
             background-color: $default_purpletint;
           }
         }

@@ -1,13 +1,18 @@
 .post-container {
   background-color: #000;
-  
-  h1, h2, h3, h4, h5 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     font-weight: 600;
     margin-bottom: 1em;
     margin-top: 1.5em;
   }
 
-  ul, ol {
+  ul,
+  ol {
     margin-bottom: 1.25em;
 
     li {
@@ -16,12 +21,12 @@
   }
 
   p {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
     font-size: 1.25em;
     line-height: 1.58;
     margin-bottom: 1.25em;
     font-weight: 400;
-    letter-spacing: -.003em;
+    letter-spacing: -0.003em;
   }
 
   /* Responsive default image width */
@@ -31,7 +36,7 @@
   }
 
   /* Responsive floating */
-  @media only screen and (min-width: 720px)  {
+  @media only screen and (min-width: 720px) {
     .butter-float-left {
       float: left;
       margin: 0px 10px 10px 0px;
@@ -57,7 +62,7 @@
     color: #c7254e;
     background-color: #f9f2f4;
     border-radius: 4px;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
   }
 
   pre {
@@ -70,6 +75,6 @@
     word-wrap: break-word;
     color: #333333;
     background-color: #f5f5f5;
-    font-family: Menlo, Monaco,Consolas, "Courier New", monospace;
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
   }
 }
