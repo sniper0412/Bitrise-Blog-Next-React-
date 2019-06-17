@@ -7,9 +7,11 @@ const Path = require('path-parser').default;
 const mapKeys = require('lodash/mapKeys');
 const camelCase = require('lodash/camelCase');
 
-const butter = require('./services/butter');
-const mailchimp = require('./services/mailchimp');
-const routePaths = require('./route-paths');
+const butter = require('../services/butter');
+const mailchimp = require('../services/mailchimp');
+const routePaths = require('../route-paths');
+
+const oldPostSlugs = require('./old-post-slugs');
 
 const redirectWithSlugConfig = (from, to) => [
   'GET',
@@ -39,7 +41,14 @@ const createXMLPath = (path, handler) => [
   }
 ];
 
+const oldPostRedirects = oldPostSlugs.map(slug => [
+  'GET',
+  new Path(`/${slug}`),
+  async (app, req, res) => (res.writeHead(301, { Location: `${routePaths.posts}/${slug}` }), res.end())
+]);
+
 module.exports = [
+  ...oldPostRedirects,
   redirectWithSlugConfig(`${routePaths.posts}/:slug`, '/post'),
   redirectWithSlugConfig(`${routePaths.categories}/:slug`, '/category'),
   redirectWithSlugConfig(`${routePaths.tags}/:slug`, '/tag'),
