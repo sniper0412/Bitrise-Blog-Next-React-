@@ -1,11 +1,17 @@
+require('dotenv').config();
 const { parse } = require('url');
+const fs = require('fs');
+const { join: joinPath } = require('path');
+const request = require('request');
 const Path = require('path-parser').default;
 const mapKeys = require('lodash/mapKeys');
 const camelCase = require('lodash/camelCase');
 
-const butter = require('./services/butter');
-const mailchimp = require('./services/mailchimp');
-const routePaths = require('./route-paths');
+const butter = require('../services/butter');
+const mailchimp = require('../services/mailchimp');
+const routePaths = require('../route-paths');
+
+const oldPostSlugs = require('./old-post-slugs');
 
 const redirectWithSlugConfig = (from, to) => [
   'GET',
@@ -35,7 +41,14 @@ const createXMLPath = (path, handler) => [
   }
 ];
 
+const oldPostRedirects = oldPostSlugs.map(slug => [
+  'GET',
+  new Path(`/${slug}`),
+  async (app, req, res) => (res.writeHead(301, { Location: `${routePaths.posts}/${slug}` }), res.end())
+]);
+
 module.exports = [
+  ...oldPostRedirects,
   redirectWithSlugConfig(`${routePaths.posts}/:slug`, '/post'),
   redirectWithSlugConfig(`${routePaths.categories}/:slug`, '/category'),
   redirectWithSlugConfig(`${routePaths.tags}/:slug`, '/tag'),
@@ -83,5 +96,19 @@ module.exports = [
     }
   }),
   createXMLPath('/rss', butter.fetchRSS),
-  createXMLPath('/atom', butter.fetchAtom)
+  createXMLPath('/atom', butter.fetchAtom),
+  [
+    'GET',
+    new Path(`/robots.txt`),
+    async (_app, _req, res) => {
+      res.setHeader('Content-Type', 'text/plain');
+      fs.createReadStream(joinPath(__dirname, 'static', 'robots.txt')).pipe(res);
+    }
+  ],
+  [
+    'GET',
+    new Path(`/sitemaps/sitemap.xml`),
+    async (_app, _req, res) =>
+      request(`https://s3.amazonaws.com/${process.env.AWS_S3_BUCKET}/sitemaps/sitemap.xml`).pipe(res)
+  ]
 ];

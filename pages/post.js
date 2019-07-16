@@ -90,8 +90,8 @@ export default class extends React.Component {
             </div>
           </div>
           <SocialIcons postTitle={post.title} />
+          {enableDisqus && <div id="disqus_thread" className="disqus-container" />}
         </div>
-        {enableDisqus && <div id="disqus_thread" className="disqus-container" />}
         <TryBitrise />
       </Fragment>
     );

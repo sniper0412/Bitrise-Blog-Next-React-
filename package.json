@@ -1,20 +1,18 @@
 {
   "name": "react-blog",
+  "license": "MIT",
   "scripts": {
     "start": "node server.js",
     "start-next": "next start",
     "build": "next build",
-    "_dev": "next",
     "dev": "nodemon server.js",
     "test": "NODE_ENV=test jest",
-    "test:watch": "npm test -- --watch",
-    "sitemap": "node scripts/generate-sitemap.js",
-    "algolia": "node scripts/index-algolia.js"
+    "test:watch": "yarn test --watch",
+    "sitemap": "node scripts/generate-sitemap",
+    "algolia": "node scripts/index-algolia.js",
+    "heroku-postbuild": "yarn run build"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@zeit/next-bundle-analyzer": "^0.1.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.8.0",
     "enzyme": "^3.9.0",
@@ -22,13 +20,16 @@
     "jest": "^24.8.0",
     "nodemon": "^1.19.0",
     "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.8.6",
-    "sitemap": "^2.2.0"
+    "react-test-renderer": "^16.8.6"
   },
   "dependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@next/bundle-analyzer": "^8.1.0",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "algoliasearch": "^3.33.0",
+    "aws-sdk": "^2.474.0",
     "buttercms": "^1.1.4",
     "classnames": "^2.2.6",
     "dotenv": "^8.0.0",
@@ -41,6 +42,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-inlinesvg": "^0.8.4",
-    "react-instantsearch-dom": "^5.5.0"
+    "react-instantsearch-dom": "^5.5.0",
+    "sitemap": "^2.2.0"
   }
 }

@@ -205,7 +205,6 @@
   line-height: 45px;
   font-size: 12px;
   @include no-focus-styling;
-  font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
   opacity: 100;
 
   @include media-above-inclusive-big {

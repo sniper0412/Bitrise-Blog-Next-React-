@@ -31,21 +31,22 @@ export default class extends App {
     return (
       <Container>
         <noscript>
-          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZK32GR"
-                  height="0"
-                  width="0"
-                  style={{ display: 'none', visibility: 'hidden' }}>
-          </iframe>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-TZK32GR"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
         </noscript>
         <Head>
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-53276411-1"></script>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-53276411-1" />
           <script
             dangerouslySetInnerHTML={{
               __html: `window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-             
-              gtag('config', 'UA-53276411-1');` }}
+              gtag('config', 'UA-53276411-1');`
+            }}
           />
           <script
             dangerouslySetInnerHTML={{
@@ -53,7 +54,8 @@ export default class extends App {
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-TZK32GR');` }}
+              })(window,document,'script','dataLayer','GTM-TZK32GR');`
+            }}
           />
 
           <link rel="stylesheet" media="screen" href="https://cloud.typography.com/7981312/721124/css/fonts.css" />
@@ -86,7 +88,7 @@ export default class extends App {
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.1/themes/reset-min.css"
             integrity="sha256-JQ2nnTmybhOWSjfV3sa8mG0ZVhTCcORER4cyXc5HL10="
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           />
         </Head>
         <Navigation />

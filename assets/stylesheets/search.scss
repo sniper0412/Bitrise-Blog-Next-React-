@@ -1,9 +1,9 @@
 .search-container {
   @include display-flex;
   @include align-items(center);
+  @include justify-content(flex-end);
   @include flex-grow(1);
   background-color: #e9d8f7;
-  position: relative;
 
   @include media-below-big {
     display: none;
@@ -11,7 +11,10 @@
 
   .search-wrapper,
   .ais-InstantSearch__root {
+    position: relative;
     width: 100%;
+    max-width: 300px;
+
     form {
       @include display-flex;
       @include align-items(center);
@@ -29,6 +32,7 @@
       }
 
       input {
+        @include base-font;
         margin-left: 10px;
         font-size: 12px;
         background-color: transparent;
@@ -36,7 +40,6 @@
         width: 210px;
         @include no-focus-styling;
         color: $v3_default_purple;
-        font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
 
         &::placeholder {
           color: #b99dd2;
@@ -45,11 +48,13 @@
     }
 
     .ais-Hits {
+      @include base-font;
       width: 100%;
+      max-width: 300px;
       position: absolute;
       background-color: #e9d8f7;
-      font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
       font-size: 12px;
+      top: 35px;
 
       &.no-result {
         padding: 10px;
@@ -109,6 +114,7 @@
     align-items: center;
 
     input {
+      @include base-font;
       flex-grow: 1;
       margin-left: 10px;
       font-size: 12px;
