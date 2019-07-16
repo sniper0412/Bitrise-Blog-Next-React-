@@ -55,20 +55,6 @@ const allAuthorUrls = async () => {
     }));
 };
 
-const allTagUrls = async () => {
-  const {
-    data: { data: tags }
-  } = await butter().tag.list();
-
-  return tags
-    .filter(({ slug }) => !!slug)
-    .map(({ slug }) => ({
-      url: `/tags/${slug}`,
-      changefreq: 'monthly',
-      priority: 0.7
-    }));
-};
-
 const allCategoryUrls = async () => {
   const {
     data: { data: categories }
@@ -84,7 +70,7 @@ const allCategoryUrls = async () => {
 };
 
 const generateResourceUrls = async () => {
-  const urls = await Promise.all([allPostUrls(), allAuthorUrls(), allTagUrls(), allCategoryUrls()]);
+  const urls = await Promise.all([allPostUrls(), allAuthorUrls(), allCategoryUrls()]);
 
   return flattenDepth(urls, 2);
 };
@@ -99,17 +85,7 @@ const generateSitemap = async () => {
         priority: 1,
         changefreq: 'always'
       },
-      ...(await generateResourceUrls()),
-      {
-        url: '/rss',
-        priority: 0.5,
-        changefreq: 'weekly'
-      },
-      {
-        url: '/atom',
-        priority: 0.5,
-        changefreq: 'weekly'
-      }
+      ...(await generateResourceUrls())
     ]
   });
 
