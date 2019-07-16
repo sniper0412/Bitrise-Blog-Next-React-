@@ -34,7 +34,7 @@ const allPostUrls = async () => {
   return posts
     .filter(({ slug }) => !!slug)
     .map(({ slug, published }) => ({
-      url: `/posts//${slug}`,
+      url: `/posts/${slug}`,
       lastmodISO: published,
       changefreq: 'daily',
       priority: 0.9
