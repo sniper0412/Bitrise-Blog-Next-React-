@@ -34,7 +34,7 @@ const allPostUrls = async () => {
   return posts
     .filter(({ slug }) => !!slug)
     .map(({ slug, published }) => ({
-      url: `/${slug}`,
+      url: `/posts//${slug}`,
       lastmodISO: published,
       changefreq: 'daily',
       priority: 0.9
@@ -49,7 +49,7 @@ const allAuthorUrls = async () => {
   return authors
     .filter(({ slug }) => !!slug)
     .map(({ slug }) => ({
-      url: `/author/${slug}`,
+      url: `/authors/${slug}`,
       changefreq: 'monthly',
       priority: 0.8
     }));
